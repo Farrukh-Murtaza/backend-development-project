@@ -10,9 +10,7 @@ function verifyAuthentication(req, res, next) {
     }
 
     token = token.split(" ")[1];
-
     const decodedPayload = jwt.verify(token, process.env.JWT_SECRET);
-
     req.user = decodedPayload;
 
     next();

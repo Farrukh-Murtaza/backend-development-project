@@ -1,11 +1,11 @@
 const router = require("express").Router();
+const userRoutes = require("../controllers/user-controller");
+const verifyAuthentication = require("../middlewares/verifyAuthentication");
 
 
-router.post("/login" , (req, res) => {
-    res.json({
-        message: "endpoint working"
-    });
-})
+router.post("/register" ,userRoutes.registerUser);
+router.post("/login" ,userRoutes.loginUser);
+router.get("/me" , verifyAuthentication ,userRoutes.getUser);
 
 
 module.exports = router;
