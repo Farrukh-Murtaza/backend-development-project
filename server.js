@@ -13,9 +13,9 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(morgan('dev'));
 
-const authRoutes = require("./routes/auth-routes");
-const verifyAuthentication = require("./middlewares/verifyAuthentication");
-app.use("/api/auth", verifyAuthentication  ,authRoutes);
+const allRoutes = require("./routes/routes");
+
+app.use("/api/",allRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
