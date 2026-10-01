@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Project = require("../models/project-model");
 
 
-async function getProjects(req, res) {
+async function getAll(req, res) {
     try {
         const projects = await Project.find({
             user: req.user._id
@@ -21,8 +21,7 @@ async function getProjects(req, res) {
     }
 }
 
-// CREATE NOTE
-async function createProjects(req, res) {
+async function createResource(req, res) {
 
     
     try {
@@ -79,7 +78,7 @@ async function findById(req, res){
     }
 }
 
-async function updateProject (req, res){
+async function updateResource (req, res){
    try {
 
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -123,9 +122,7 @@ async function updateProject (req, res){
    }
 }
 
-
-
-async function deleteProject (req, res){
+async function deleteResource (req, res){
    try {
      const project = await Project.findById(req.params.id);
 
@@ -157,11 +154,10 @@ async function deleteProject (req, res){
    }
 }
 
-
 module.exports = {
-    getProjects,
+    getAll,
     findById,
-    createProjects,
-    updateProject,
-    deleteProject
+    createResource,
+    updateResource,
+    deleteResource
 }

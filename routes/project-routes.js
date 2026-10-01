@@ -4,11 +4,11 @@ const verifyAuthentication = require("../middlewares/verifyAuthentication");
 
 
 router.use(verifyAuthentication);
-router.get("/" , projectController.getProjects);
+router.get("/" , projectController.getAll);
 router.get("/:id" , projectController.findById);
-router.post("/" , projectController.createProjects);
-router.put("/:id" , projectController.updateProject);
-router.delete("/:id" , projectController.deleteProject);
+router.post("/" , projectController.createResource);
+router.put("/:id" , projectController.updateResource);
+router.delete("/:id" , projectController.deleteResource);
 
 
 
