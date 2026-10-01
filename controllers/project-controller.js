@@ -27,7 +27,7 @@ async function createResource(req, res) {
     try {
         const newProject = await Project.create({
             name: req.body.name,
-            description: req.body.content,
+            description: req.body.description,
             user: req.user._id
         });
 
