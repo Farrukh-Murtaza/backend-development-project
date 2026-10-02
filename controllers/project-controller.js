@@ -103,7 +103,12 @@ async function updateResource (req, res){
 
     const updatedProject = await Project.findByIdAndUpdate(
         req.params.id,
-        { $set: req.body },
+        { 
+           title: req.body.title,
+            description: req.body.description,
+            status: req.body.status
+
+         },
         { new: true, runValidators: true }
     );
 

@@ -94,17 +94,17 @@ async function getTaskByProject(req, res) {
 
 async function updateResource(req, res) {
     try {
-        const { taskId } = req.params;
+        const { id } = req.params;
 
        
-        if (!mongoose.Types.ObjectId.isValid(taskId)) {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({
                 message: "Invalid task ID."
             });
         }
 
        
-        const task = await Task.findById(taskId);
+        const task = await Task.findById(id);
 
        
         if (!task) {
@@ -132,7 +132,7 @@ async function updateResource(req, res) {
 
       
         const updatedTask = await Task.findByIdAndUpdate(
-            taskId,
+            id,
             {
                 title: req.body.title,
                 description: req.body.description,
