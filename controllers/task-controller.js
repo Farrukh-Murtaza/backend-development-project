@@ -160,17 +160,17 @@ async function updateResource(req, res) {
 
 async function deleteResource(req, res) {
     try {
-        const { taskId } = req.params;
+        const { id } = req.params;
 
         
-        if (!mongoose.Types.ObjectId.isValid(taskId)) {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({
                 message: "Invalid task ID."
             });
         }
 
        
-        const task = await Task.findById(taskId);
+        const task = await Task.findById(id);
         
         if (!task) {
             return res.status(404).json({
@@ -192,7 +192,7 @@ async function deleteResource(req, res) {
             });
         }
 
-        await Task.findByIdAndDelete(taskId);
+        await Task.findByIdAndDelete(id);
 
         res.status(200).json({
             message: "Task deleted successfully."
