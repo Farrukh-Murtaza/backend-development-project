@@ -62,7 +62,7 @@ POST /api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Jane Doe",
+  "username": "Jane Doe",
   "email": "jane@example.com",
   "password": "securePassword123"
 }
